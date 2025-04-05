@@ -1,46 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+@media print {
+	body {
+		margin: 0 !important;
+	}
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.main-container {
+	font-family: 'Lato';
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ck-content {
+	font-family: 'Lato';
+	line-height: 1.6;
+	word-break: break-word;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.editor-container_include-block-toolbar {
+	margin-left: 42px;
 }
 
-.card {
-  padding: 2em;
+.editor-container_balloon-editor .editor-container__editor {
+	min-width: 795px;
+	max-width: 795px;
 }
 
-.read-the-docs {
-  color: #888;
+.editor_container__word-count .ck-word-count {
+	color: var(--ck-color-text);
+	display: flex;
+	height: 20px;
+	gap: var(--ck-spacing-small);
+	justify-content: flex-end;
+	font-size: var(--ck-font-size-base);
+	line-height: var(--ck-line-height-base);
+	font-family: var(--ck-font-face);
+	padding: var(--ck-spacing-small) var(--ck-spacing-standard);
 }
