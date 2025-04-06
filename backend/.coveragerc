@@ -1,0 +1,6 @@
+[run]
+omit =
+    # Omits certain files and folders for coverage
+    manage.py
+    __init__.py
+    */migrations/*
