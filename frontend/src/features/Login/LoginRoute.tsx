@@ -3,8 +3,10 @@ import { Login } from "./components/Login";
 /**
  * The Login Route component
  */
-export function LoginRoute() {
+function LoginRoute() {
     return (
         <Login />        
     )
 }
+
+export default LoginRoute

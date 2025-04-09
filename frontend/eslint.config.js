@@ -32,6 +32,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "react-dom/no-dangerously-set-innerhtml": "warn",
+      "@typescript-eslint/no-misused-promises": "off"
     },
   },
 )
