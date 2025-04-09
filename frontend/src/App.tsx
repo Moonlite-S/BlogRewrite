@@ -1,9 +1,9 @@
 import './App.css'
-import TestEditor from './Components/TextEditor/CKEditor'
-
+import { LoginRoute } from './Components/Login/LoginRoute'
+  
 function App() {
   return (
-    <TestEditor />
+    <LoginRoute />
   )
 }
 
