@@ -7,14 +7,14 @@ export function NavBar() {
     <div className="drawer">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-            <label htmlFor="my-drawer" className="btn btn-primary drawer-button fixed top-2 left-2" aria-label="Open drawer">
+            <label htmlFor="my-drawer" className="btn btn-primary drawer-button fixed top-2 left-2 z-1" aria-label="Open drawer">
                 <TfiAlignJustify className="text-xl" />
             </label>
             
             <Outlet />
         </div>
 
-        <div className="drawer-side">
+        <div className="drawer-side z-2">
             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
             <Sidebar>
@@ -22,7 +22,7 @@ export function NavBar() {
                     <Sidebar.Button route="/">
                         Home
                     </Sidebar.Button>
-                    <Sidebar.Button route="/">
+                    <Sidebar.Button route="/blogs">
                         Blogs
                     </Sidebar.Button>
                 </Sidebar.Header>
