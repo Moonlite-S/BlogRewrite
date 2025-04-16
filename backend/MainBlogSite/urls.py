@@ -4,6 +4,8 @@ from rest_framework import routers
 from blog.views import BlogPostViewSet
 from user_auth.views import UserViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()

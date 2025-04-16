@@ -1,17 +1,32 @@
 import { BlogCard } from "@/Components/Blog/Card/BlogCard";
 import { BlogMenu } from "../BlogMenu/BlogMenu";
+import { IBlogCard } from "@/interfaces/BlogType";
+import { useQuery } from "@tanstack/react-query";
+import { fetchBlogs } from "../../api/FetchBlogs";
+import { LoadingPage } from "@/loading";
 
 export function BlogList() {
+    const { data, isLoading, isError, error } = useQuery<IBlogCard[], Error>({
+        queryKey: ["blogs"],
+        queryFn: () => fetchBlogs(),
+    });
+
+    if (isLoading) {
+        return <LoadingPage />;
+    }
+
+    if (isError) {
+        console.error("Error fetching blogs:", error);
+        return <div>Error loading blogs.</div>;
+    }
+
     return (
         <div className="flex flex-col gap-4 w-full justify-center p-10">
             <BlogMenu />
 
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            {data?.map((blog) => (
+                <BlogCard key={blog.uuid} blog={blog} />
+            ))}
         </div>
     )
 }

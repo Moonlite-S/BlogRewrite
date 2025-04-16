@@ -3,13 +3,11 @@ import BlogHeaderImage from "../assets/header-coffee.jpg"
 
 export function Blogs() {
     return (
-        <>
-            <div className="bg-base-200 flex-col justify-center min-h-screen pb-10">
-                <BlogHeader />
-                <BlogList />
-                <BlogPagination />
-            </div>
-        </>
+        <div className="bg-base-200 flex-col justify-center min-h-screen pb-10">
+            <BlogHeader />
+            <BlogList />
+            <BlogPagination />
+        </div>
     )
 }
 

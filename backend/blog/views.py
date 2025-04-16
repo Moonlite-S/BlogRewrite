@@ -8,7 +8,7 @@ from .serializers import BlogPostDetailSerializer, BlogPostCreateSerializer, Blo
 class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostDetailSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
     lookup_field = 'uuid'
 
     def get_serializer_class(self):
@@ -18,7 +18,7 @@ class BlogPostViewSet(viewsets.ModelViewSet):
             return BlogPostListSerializer
         elif self.action == 'update':
             return BlogPostUpdateSerializer
-        return BlogPostDetailSerializer
+        return BlogPostDetailSerializer # Shows the single blog post
     
     def get_permissions(self):
         if self.action in ['create', 'update', 'partial_update', 'destroy']:

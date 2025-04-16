@@ -1,13 +1,18 @@
 import { BlogCard } from "@/Components/Blog/Card/BlogCard";
 import heroImage from "@/features/Home/assets/hero_page.jpg";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { fetchBlogs } from "@/features/BlogList/api/FetchBlogs";
+import { IBlogCard } from "@/interfaces/BlogType";
+import { LoadingPage } from "@/loading";
+
 
 export function Home() {
   return (
-    <div>
+    <>
         <Hero />
         <RecentBlogs />
-    </div>
+    </>
   )
 }
 
@@ -35,15 +40,29 @@ function Hero() {
 
 function RecentBlogs() {
     const navigate = useNavigate();
+    const { data, isLoading, isError, error } = useQuery<IBlogCard[], Error>({
+        queryKey: ["blogs"],
+        queryFn: () => fetchBlogs(),
+    });
+
+    if (isLoading) {
+        return <LoadingPage />;
+    }
+    
+    if (isError) {
+        console.error("Error fetching blogs:", error);
+        return <div>Error loading blogs.</div>;
+    }
+    
     return (
-        <div className="bg-base-200 min-h-screen">
-            <div className="hero-content  flex-col">
+        <div className="bg-base-200 min-h-screen w-full">
+            <div className="hero-content flex-col w-full mx-auto">
                 <h2 className="text-2xl font-bold">Recent Blogs</h2>
 
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                
+                {data?.slice(0, 3).map((blog) => (
+                    <BlogCard key={blog.uuid} blog={blog} />
+                ))}
+            
                 <button className="btn btn-primary" onClick={() => navigate("/blogs")}>View All Blogs</button>
             </div>
         </div>

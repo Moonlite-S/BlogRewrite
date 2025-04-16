@@ -1,16 +1,20 @@
-export function BlogCard() {
+import { Link } from "react-router-dom";
+import { IBlogCard } from "@/interfaces/BlogType";
+
+export function BlogCard({blog}: {blog: IBlogCard}) {
     return (
-        <div className="card lg:card-side bg-base-100 shadow-md">
+        <div className="card lg:card-side bg-base-100 shadow-md w-full">
             <figure>
                 <img
-                src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-                alt="Album" />
+                    src={blog.image}
+                    alt="blog image" />
             </figure>
+            
             <div className="card-body">
-                <h2 className="card-title">New album is released!</h2>
-                <p>Click the button to listen on Spotiwhy app.</p>
+                <h2 className="card-title">{blog.title}</h2>
+                <p>{blog.content}</p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
+                <Link to={`/blogs/${blog.uuid}`} className="btn btn-primary">Read More</Link>
                 </div>
             </div>
         </div>
